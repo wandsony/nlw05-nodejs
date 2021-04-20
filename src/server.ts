@@ -1,6 +1,15 @@
 import express from "express";
+import { routes } from "./routes";
 
-const app = express();
+import "./database";
+
+ const app = express();
+
+ app.use(express.json());
+ app.use(routes);
+
+app.listen(3333, () => console.log ("Server is running on port 3333"));
+
 /**
  * GET = Buscas
  * POST = Criação
@@ -8,13 +17,3 @@ const app = express();
  * DELETE = Deletar
  * PATCH = Alterar uma informação especfica 
  */
-
- app.get("/", (req, res) => {
-  return res.json({ message: "Olá NLW-05"});
-});
-
-app.post("/", (req, res) => {
-  return res.json({ message: "Usuário salvo com sucesso!"});
-});
-
-app.listen(3333, () => console.log ("Server is running on port 3333"));
